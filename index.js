@@ -11,8 +11,10 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:auth/wedding-server')
 
 // App setup
+app.set('views', './views');
 app.use(morgan('combined'))
 app.use(bodyParser.json({type: '*/*'}))
+app.engine('html', require('ejs').renderFile);
 router(app)
 
 // Server setup
